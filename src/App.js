@@ -27,6 +27,37 @@ class App extends React.Component {
     });
   }
 
+  checkAttributes = () => {
+    const { attr1, attr2, attr3 } = this.state;
+    const max = 90;
+    return [attr1, attr2, attr3].every((attr) => attr >= 0 && attr <= max);
+  }
+
+  sumAttributes = () => {
+    const { attr1, attr2, attr3 } = this.state;
+    const max = 210;
+    if (this.checkAttributes()) {
+      const sum = [attr1, attr2, attr3]
+        .reduce((acc, curr) => acc + parseInt(curr, 10), 0);
+      return (sum <= max);
+    }
+  }
+
+  isSaveButtonDisabled = () => {
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+    } = this.state;
+    const areInputsEmpty = !name || !description || !image;
+    const areAttrsEmpty = !attr1 || !attr2 || !attr3;
+    const areAttrsValid = this.sumAttributes();
+    return !!((areInputsEmpty || areAttrsEmpty || !areAttrsValid));
+  }
+
   render() {
     const {
       name,
@@ -52,6 +83,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
           onInputChange={ this.handleChange }
+          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
         />
         <Card
           cardName={ name }

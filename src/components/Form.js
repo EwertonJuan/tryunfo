@@ -51,6 +51,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
             id="attr1-input"
             name="attr1"
+            min="0"
+            max="90"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -63,6 +65,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
             id="attr2-input"
             name="attr2"
+            min="0"
+            max="90"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -75,6 +79,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
             id="attr3-input"
             name="attr3"
+            min="0"
+            max="90"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -88,7 +94,7 @@ class Form extends React.Component {
             id="image-input"
             name="image"
             value={ cardImage }
-            onClick={ onInputChange }
+            onChange={ onInputChange }
           />
         </label>
 
