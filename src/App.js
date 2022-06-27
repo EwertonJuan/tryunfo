@@ -71,6 +71,7 @@ class App extends React.Component {
       cards: [...previous.cards, newCard],
       nameFilter: '',
       rareFilter: '',
+      trunfoFilter: false,
     }
     ));
   }
@@ -88,9 +89,39 @@ class App extends React.Component {
   }
 
   filterCard = ({ target }, name) => {
-    const value = (target.value === 'todas') ? '' : target.value;
+    // const value = (target.value === 'todas') ? '' : target.value;
+    let value;
+    if (target.value === 'todas') {
+      value = '';
+    } else if (target.type === 'checkbox') {
+      value = target.checked;
+    } else {
+      value = target.value;
+    }
     this.setState({ [name]: value });
   }
+
+  renderCards = (card) => (
+    <div key={ card.name }>
+      <Card
+        cardName={ card.name }
+        cardDescription={ card.description }
+        cardAttr1={ card.attr1 }
+        cardAttr2={ card.attr2 }
+        cardAttr3={ card.attr3 }
+        cardImage={ card.image }
+        cardRare={ card.rare }
+        cardTrunfo={ card.trunfo }
+      />
+      <button
+        type="button"
+        data-testid="delete-button"
+        onClick={ () => this.deleteCard(card.name) }
+      >
+        Excluir
+      </button>
+    </div>
+  )
 
   render() {
     const {
@@ -105,6 +136,7 @@ class App extends React.Component {
       cards,
       nameFilter,
       rareFilter,
+      trunfoFilter,
     } = this.state;
 
     return (
@@ -144,11 +176,13 @@ class App extends React.Component {
             id="name-filter"
             placeholder="Nome da carta"
             onChange={ (event) => this.filterCard(event, 'nameFilter') }
+            disabled={ trunfoFilter }
           />
         </label>
         <select
           data-testid="rare-filter"
           onChange={ (event) => this.filterCard(event, 'rareFilter') }
+          disabled={ trunfoFilter }
         >
           <option>
             todas
@@ -163,31 +197,23 @@ class App extends React.Component {
             muito raro
           </option>
         </select>
+        <label htmlFor="trunfo-filter">
+          <input
+            type="checkbox"
+            data-testid="trunfo-filter"
+            id="trunfo-filter"
+            onChange={ (event) => this.filterCard(event, 'trunfoFilter') }
+          />
+          Super Trunfo
+        </label>
 
         <ul>
-          { cards.filter((card) => ((rareFilter === 'raro')
-            ? card.rare === rareFilter : card.rare.includes(rareFilter)))
-            .filter((card) => card.name.includes(nameFilter)).map((card) => (
-              <div key={ card.name }>
-                <Card
-                  cardName={ card.name }
-                  cardDescription={ card.description }
-                  cardAttr1={ card.attr1 }
-                  cardAttr2={ card.attr2 }
-                  cardAttr3={ card.attr3 }
-                  cardImage={ card.image }
-                  cardRare={ card.rare }
-                  cardTrunfo={ card.trunfo }
-                />
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  onClick={ () => this.deleteCard(card.name) }
-                >
-                  Excluir
-                </button>
-              </div>
-            ))}
+          { (trunfoFilter) ? cards.filter((card) => card.trunfo === trunfoFilter)
+            .map((card) => this.renderCards(card))
+            : cards.filter((card) => ((rareFilter === 'raro')
+              ? card.rare === rareFilter : card.rare.includes(rareFilter)))
+              .filter((card) => card.name.includes(nameFilter))
+              .map((card) => this.renderCards(card)) }
         </ul>
       </div>
     );
