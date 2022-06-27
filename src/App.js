@@ -69,7 +69,8 @@ class App extends React.Component {
       rare: '',
       trunfo: false,
       cards: [...previous.cards, newCard],
-      filter: '',
+      nameFilter: '',
+      rareFilter: '',
     }
     ));
   }
@@ -86,8 +87,9 @@ class App extends React.Component {
     });
   }
 
-  filterCard = ({ target }) => {
-    this.setState({ filter: target.value });
+  filterCard = ({ target }, name) => {
+    const value = (target.value === 'todas') ? '' : target.value;
+    this.setState({ [name]: value });
   }
 
   render() {
@@ -101,7 +103,8 @@ class App extends React.Component {
       rare,
       trunfo,
       cards,
-      filter,
+      nameFilter,
+      rareFilter,
     } = this.state;
 
     return (
@@ -140,32 +143,51 @@ class App extends React.Component {
             data-testid="name-filter"
             id="name-filter"
             placeholder="Nome da carta"
-            onChange={ this.filterCard }
+            onChange={ (event) => this.filterCard(event, 'nameFilter') }
           />
         </label>
+        <select
+          data-testid="rare-filter"
+          onChange={ (event) => this.filterCard(event, 'rareFilter') }
+        >
+          <option>
+            todas
+          </option>
+          <option>
+            normal
+          </option>
+          <option>
+            raro
+          </option>
+          <option>
+            muito raro
+          </option>
+        </select>
 
         <ul>
-          { cards.filter((card) => card.name.includes(filter)).map((card) => (
-            <div key={ card.name }>
-              <Card
-                cardName={ card.name }
-                cardDescription={ card.description }
-                cardAttr1={ card.attr1 }
-                cardAttr2={ card.attr2 }
-                cardAttr3={ card.attr3 }
-                cardImage={ card.image }
-                cardRare={ card.rare }
-                cardTrunfo={ card.trunfo }
-              />
-              <button
-                type="button"
-                data-testid="delete-button"
-                onClick={ () => this.deleteCard(card.name) }
-              >
-                Excluir
-              </button>
-            </div>
-          ))}
+          { cards.filter((card) => ((rareFilter === 'raro')
+            ? card.rare === rareFilter : card.rare.includes(rareFilter)))
+            .filter((card) => card.name.includes(nameFilter)).map((card) => (
+              <div key={ card.name }>
+                <Card
+                  cardName={ card.name }
+                  cardDescription={ card.description }
+                  cardAttr1={ card.attr1 }
+                  cardAttr2={ card.attr2 }
+                  cardAttr3={ card.attr3 }
+                  cardImage={ card.image }
+                  cardRare={ card.rare }
+                  cardTrunfo={ card.trunfo }
+                />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => this.deleteCard(card.name) }
+                >
+                  Excluir
+                </button>
+              </div>
+            ))}
         </ul>
       </div>
     );
