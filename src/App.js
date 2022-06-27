@@ -73,6 +73,11 @@ class App extends React.Component {
     ));
   }
 
+  hasTrunfo = () => {
+    const { cards } = this.state;
+    return cards.some(({ trunfo }) => trunfo === true);
+  }
+
   render() {
     const {
       name,
@@ -100,6 +105,7 @@ class App extends React.Component {
           onInputChange={ this.handleChange }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ this.hasTrunfo() }
         />
         <Card
           cardName={ name }
