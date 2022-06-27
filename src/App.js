@@ -69,6 +69,7 @@ class App extends React.Component {
       rare: '',
       trunfo: false,
       cards: [...previous.cards, newCard],
+      filter: '',
     }
     ));
   }
@@ -85,6 +86,10 @@ class App extends React.Component {
     });
   }
 
+  filterCard = ({ target }) => {
+    this.setState({ filter: target.value });
+  }
+
   render() {
     const {
       name,
@@ -96,6 +101,7 @@ class App extends React.Component {
       rare,
       trunfo,
       cards,
+      filter,
     } = this.state;
 
     return (
@@ -126,8 +132,20 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
         />
 
+        <label htmlFor="name-filter">
+          Buscar carta
+          {' '}
+          <input
+            type="text"
+            data-testid="name-filter"
+            id="name-filter"
+            placeholder="Nome da carta"
+            onChange={ this.filterCard }
+          />
+        </label>
+
         <ul>
-          { cards.map((card) => (
+          { cards.filter((card) => card.name.includes(filter)).map((card) => (
             <div key={ card.name }>
               <Card
                 cardName={ card.name }
