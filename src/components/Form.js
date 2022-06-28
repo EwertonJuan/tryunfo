@@ -12,12 +12,14 @@ class Form extends React.Component {
     <label htmlFor="trunfo-input">
       <input
         type="checkbox"
+        /* className="form-check" */
         data-testid="trunfo-input"
         id="trunfo-input"
         name="trunfo"
         checked={ cardTrunfo }
         onChange={ onInputChange }
       />
+      {' '}
       Super Trunfo
     </label>
   )
@@ -42,8 +44,10 @@ class Form extends React.Component {
       <form onSubmit={ onSaveButtonClick }>
         <label htmlFor="name-input">
           Nome:
+          {' '}
           <input
             type="text"
+            className="input-group mb-3"
             data-testid="name-input"
             id="name-input"
             name="name"
@@ -54,8 +58,10 @@ class Form extends React.Component {
 
         <label htmlFor="description-input">
           Descrição:
+          {' '}
           <input
             type="textarea"
+            className="input-group mb-3"
             data-testid="description-input"
             id="description-input"
             name="description"
@@ -66,8 +72,10 @@ class Form extends React.Component {
 
         <label htmlFor="attr1-input">
           Atributo 1:
+          {' '}
           <input
             type="number"
+            className="input-group mb-3"
             data-testid="attr1-input"
             id="attr1-input"
             name="attr1"
@@ -80,8 +88,10 @@ class Form extends React.Component {
 
         <label htmlFor="attr2-input">
           Atributo 2:
+          {' '}
           <input
             type="number"
+            className="input-group mb-3"
             data-testid="attr2-input"
             id="attr2-input"
             name="attr2"
@@ -94,8 +104,10 @@ class Form extends React.Component {
 
         <label htmlFor="attr3-input">
           Atributo 3:
+          {' '}
           <input
             type="number"
+            className="input-group mb-3"
             data-testid="attr3-input"
             id="attr3-input"
             name="attr3"
@@ -108,8 +120,10 @@ class Form extends React.Component {
 
         <label htmlFor="image-input">
           Imagem:
+          {' '}
           <input
             type="text"
+            className="input-group mb-3"
             data-testid="image-input"
             id="image-input"
             name="image"
@@ -120,8 +134,10 @@ class Form extends React.Component {
 
         <label htmlFor="rare-input">
           Raridade:
+          {' '}
           <select
             data-testid="rare-input"
+            className="input-group mb-3"
             id="rare-input"
             name="rare"
             value={ cardRare }
@@ -144,6 +160,7 @@ class Form extends React.Component {
 
         <button
           type="submit"
+          className="btn btn-light"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
         >

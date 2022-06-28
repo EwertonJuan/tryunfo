@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +10,144 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.form-div, .card-preview {
+  height: 100vh;
+  width: 100%;
+}
+
+.card-preview {
+  background-color: rgb(165, 20, 20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-preview .card {
+  /* height: 283px; */
+  /* width: 200px; */
+  height: 70.75vh;
+  width: 50%;
+}
+
+.card span, .card p {
+  color: white;
+  z-index: 2;
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+  /* border: 5px solid yellow;
+  border-radius: 5px; */
+  /* border: 1px solid red; */
+}
+
+.card {
+  height: 28.3%;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-border {
+  border: 10px solid white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: none;
+  z-index: 6;
+}
+
+.card-name {
+  /* background-color: rgb(165, 20, 20); */
+  align-self: flex-end;
+  margin: 10px 10px 0;
+  padding: 5px 10px;
+  font-weight: 900;
+}
+
+.trunfo {
+  align-self: flex-start;
+  position: absolute;
+  margin: 10px 10px 0;
+  padding: 5px 10px;
+  font-weight: 900;
+}
+
+.card-rare {
+  align-self: flex-end;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+.card-dscpt {
+  background-color: rgb(165, 20, 20);
+  /* align-self: flex-start; */
+  margin: 0 10px;
+  padding: 5px;
+}
+
+.card-attr {
+  margin-right: 15px;
+  /* align-self: flex-end; */
+  font-weight: 900;
+  font-size: larger;
+}
+
+.attr {
+  /* width: 100%; */
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(165, 20, 20);
+  margin: 0 10px;
+}
+
+.card-info {
+  margin: 0;
+  padding: 5px;
+}
+
+.upper-info {
+  z-index: 5;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lower-info {
+  z-index: 4;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 40%;
+}
+
+.form-div {
+  /* background-color: rgb(165, 20, 20); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
 }
