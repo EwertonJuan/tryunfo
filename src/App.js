@@ -91,7 +91,6 @@ class App extends React.Component {
   }
 
   filterCard = ({ target }, name) => {
-    // const value = (target.value === 'todas') ? '' : target.value;
     let value;
     if (target.value === 'todas') {
       value = '';
@@ -181,45 +180,48 @@ class App extends React.Component {
         </main>
 
         <section className="saved-cards">
-          <label htmlFor="name-filter">
-            Buscar carta
-            {' '}
-            <input
-              type="text"
-              data-testid="name-filter"
-              id="name-filter"
-              placeholder="Nome da carta"
-              onChange={ (event) => this.filterCard(event, 'nameFilter') }
+          <div className="filter">
+            <label htmlFor="name-filter">
+              Buscar carta
+              {' '}
+              <input
+                type="text"
+                data-testid="name-filter"
+                id="name-filter"
+                placeholder="Nome da carta"
+                onChange={ (event) => this.filterCard(event, 'nameFilter') }
+                disabled={ trunfoFilter }
+              />
+            </label>
+            <select
+              data-testid="rare-filter"
+              onChange={ (event) => this.filterCard(event, 'rareFilter') }
               disabled={ trunfoFilter }
-            />
-          </label>
-          <select
-            data-testid="rare-filter"
-            onChange={ (event) => this.filterCard(event, 'rareFilter') }
-            disabled={ trunfoFilter }
-          >
-            <option>
-              todas
-            </option>
-            <option>
-              normal
-            </option>
-            <option>
-              raro
-            </option>
-            <option>
-              muito raro
-            </option>
-          </select>
-          <label htmlFor="trunfo-filter">
-            <input
-              type="checkbox"
-              data-testid="trunfo-filter"
-              id="trunfo-filter"
-              onChange={ (event) => this.filterCard(event, 'trunfoFilter') }
-            />
-            Super Trunfo
-          </label>
+            >
+              <option>
+                todas
+              </option>
+              <option>
+                normal
+              </option>
+              <option>
+                raro
+              </option>
+              <option>
+                muito raro
+              </option>
+            </select>
+            <label htmlFor="trunfo-filter">
+              <input
+                type="checkbox"
+                data-testid="trunfo-filter"
+                id="trunfo-filter"
+                onChange={ (event) => this.filterCard(event, 'trunfoFilter') }
+              />
+              {' '}
+              Super Trunfo
+            </label>
+          </div>
 
           <ul>
             { (trunfoFilter) ? cards.filter((card) => card.trunfo === trunfoFilter)

@@ -25,8 +25,6 @@ code {
 }
 
 .card-preview .card {
-  /* height: 283px; */
-  /* width: 200px; */
   height: 70.75vh;
   width: 50%;
 }
@@ -42,9 +40,6 @@ code {
   object-fit: cover;
   position: absolute;
   z-index: 1;
-  /* border: 5px solid yellow;
-  border-radius: 5px; */
-  /* border: 1px solid red; */
 }
 
 .card {
@@ -64,7 +59,6 @@ code {
 }
 
 .card-name {
-  /* background-color: rgb(165, 20, 20); */
   align-self: flex-end;
   margin: 10px 10px 0;
   padding: 5px 10px;
@@ -87,20 +81,17 @@ code {
 
 .card-dscpt {
   background-color: rgb(165, 20, 20);
-  /* align-self: flex-start; */
   margin: 0 10px;
   padding: 5px;
 }
 
 .card-attr {
   margin-right: 15px;
-  /* align-self: flex-end; */
   font-weight: 900;
   font-size: larger;
 }
 
 .attr {
-  /* width: 100%; */
   z-index: 3;
   display: flex;
   flex-direction: row;
@@ -133,7 +124,6 @@ code {
 }
 
 .form-div {
-  /* background-color: rgb(165, 20, 20); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,11 +143,8 @@ form {
 }
 
 ul {
-  /* height: 1968px; */
   width: 200vh;
-  /* border: 2px solid green; */
   display: flex;
-  /* justify-content: space-around; */
   flex-wrap: wrap;
 }
 
@@ -168,7 +155,6 @@ ul {
   flex-direction: column;
   justify-content: space-bet;
   margin: 5px;
-  /* border: 2px solid red; */
 }
 
 .saved-cards .card {
@@ -179,4 +165,11 @@ ul {
 
 .saved-card button {
   margin-top: 10px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
 }
