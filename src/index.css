@@ -48,10 +48,10 @@ code {
 }
 
 .card {
-  height: 28.3%;
-  width: 20%;
   display: flex;
   justify-content: space-between;
+  height: 70.75vh;
+  width: 50%;
 }
 
 .card-border {
@@ -147,7 +147,36 @@ form {
   justify-content: space-around;
 }
 
-label {
+.saved-cards {
+  height: 100vh;
+  width: 100vh;
+}
+
+ul {
+  /* height: 1968px; */
+  width: 200vh;
+  /* border: 2px solid green; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+}
+
+.saved-card {
+  height: 492px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-bet;
+  margin: 5px;
+  /* border: 2px solid red; */
+}
+
+.saved-cards .card {
+  height: 100%;
+  width: 100%;
+  box-shadow: 2px 5px 5px rgb(204, 204, 204);
+}
+
+.saved-card button {
+  margin-top: 10px;
 }

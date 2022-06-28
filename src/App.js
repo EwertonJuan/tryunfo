@@ -104,7 +104,7 @@ class App extends React.Component {
   }
 
   renderCards = (card) => (
-    <div key={ card.name }>
+    <div key={ card.name } className="saved-card">
       <Card
         cardName={ card.name }
         cardDescription={ card.description }
@@ -117,6 +117,7 @@ class App extends React.Component {
       />
       <button
         type="button"
+        className="btn btn-danger"
         data-testid="delete-button"
         onClick={ () => this.deleteCard(card.name) }
       >
